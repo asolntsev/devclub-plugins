@@ -27,7 +27,7 @@ public class LoginServiceTest {
 
     assertThatThrownBy(() -> service.login("fedja"))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessage("Invalid zopa");
+        .hasMessage("Invalid credentials");
   }
 
 
