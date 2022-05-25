@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-  implementation 'com.codeborne:selenide:6.5.0'
+  implementation 'com.codeborne:selenide:6.5.1'
   implementation 'org.liquibase:liquibase-core:4.10.0'
   implementation 'org.postgresql:postgresql:42.3.5'
 
