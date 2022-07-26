@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
   implementation 'com.codeborne:selenide:6.6.6'
-  implementation 'org.liquibase:liquibase-core:4.13.0'
+  implementation 'org.liquibase:liquibase-core:4.14.0'
   implementation 'org.postgresql:postgresql:42.4.0'
 
   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
