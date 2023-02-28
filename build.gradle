@@ -2,17 +2,28 @@ plugins {
   id 'java'
 }
 
+ext {
+  encoding = 'UTF-8'
+  selenideVersion = '6.12.0'
+  liquibaseVersion = '4.19.0'
+  postgreVersion = '42.5.4'
+  junitVersion = '5.9.2'
+  mockitoVersion = '5.1.1'
+  assertjVersion = '3.24.2'
+  slf4jVersion = '2.0.6'
+}
+
 dependencies {
-  implementation 'com.codeborne:selenide:6.12.0'
-  implementation 'org.liquibase:liquibase-core:4.19.0'
-  implementation 'org.postgresql:postgresql:42.5.4'
+  implementation "com.codeborne:selenide:$selenideVersion"
+  implementation("org.liquibase:liquibase-core:$liquibaseVersion") { exclude group: "org.yaml" }
+  implementation "org.postgresql:postgresql:$postgreVersion"
 
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-  testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-  testImplementation 'org.mockito:mockito-core:5.1.1'
-  testImplementation 'org.assertj:assertj-core:3.24.2'
+  testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+  testImplementation "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+  testImplementation "org.mockito:mockito-core:$mockitoVersion"
+  testImplementation "org.assertj:assertj-core:$assertjVersion"
 
-  runtimeOnly 'org.slf4j:slf4j-simple:2.0.6'
+  runtimeOnly "org.slf4j:slf4j-simple:$slf4jVersion"
 }
 
 group = 'eu.devclub'
@@ -20,9 +31,6 @@ version = '1.0.0-SNAPSHOT'
 
 defaultTasks 'check'
 
-ext {
-  encoding = 'UTF-8'
-}
 tasks.withType(JavaCompile) {
   options.encoding = encoding
   options.debug = true
@@ -41,9 +49,9 @@ test {
 
 tasks.withType(Test) {
   useJUnitPlatform()
-  systemProperty('file.encoding', encoding)
   jvmArgs = ['-ea', '-Xmx512m']
-  systemProperties += System.properties
   systemProperties['user.language'] = 'FR'
+  systemProperties['selenide.headless'] = 'true'
+  systemProperties['file.encoding'] = encoding
 }
 
