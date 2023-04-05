@@ -4,7 +4,7 @@ plugins {
 
 ext {
   encoding = 'UTF-8'
-  selenideVersion = '6.12.4'
+  selenideVersion = '6.13.0'
   liquibaseVersion = '4.20.0'
   postgreVersion = '42.6.0'
   junitVersion = '5.9.2'
