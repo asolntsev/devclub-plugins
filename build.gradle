@@ -7,7 +7,7 @@ ext {
   selenideVersion = '6.16.0'
   liquibaseVersion = '4.23.0'
   postgreVersion = '42.6.0'
-  junitVersion = '5.9.3'
+  junitVersion = '5.10.0'
   mockitoVersion = '5.4.0'
   assertjVersion = '3.24.2'
   slf4jVersion = '2.0.7'
