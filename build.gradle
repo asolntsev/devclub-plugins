@@ -6,7 +6,7 @@ ext {
   encoding = 'UTF-8'
   selenideVersion = '7.7.0'
   liquibaseVersion = '4.30.0'
-  postgreVersion = '42.7.4'
+  postgreVersion = '42.7.5'
   junitVersion = '5.11.4'
   mockitoVersion = '5.15.2'
   assertjVersion = '3.27.2'
