@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 jobs:
-  compile-java-code:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,15 +17,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - uses: gradle/actions/setup-gradle@v3
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: classes testClasses --no-daemon --console=plain -i
+        run: ./gradlew test -Pheadless=true --no-daemon --console=plain -i
 
   auto-merge-dependabot:
     name: 🤖 Auto merge dependabot PR
     timeout-minutes: 10
-    needs: [compile-java-code]
+    needs: [test]
     if: ${{ github.actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     permissions:
@@ -33,7 +32,7 @@ jobs:
       contents: write
     steps:
       - name: 🤖 Merge PR from dependabot
-        uses: fastify/github-action-merge-dependabot@v3.11.0
+        uses: fastify/github-action-merge-dependabot@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           target: minor

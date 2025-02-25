@@ -35,7 +35,7 @@ version = '1.0.0-SNAPSHOT'
 
 defaultTasks 'check'
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
   options.encoding = encoding
   options.debug = true
   options.release = 17
@@ -51,11 +51,11 @@ test {
   include 'eu/devclub/**/*'
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
   useJUnitPlatform()
   jvmArgs = ['-ea', '-Xmx512m']
   systemProperties['user.language'] = 'FR'
-  systemProperties['selenide.headless'] = 'true'
+  systemProperties["selenide.headless"] = project.properties["headless"] ?: "false"
   systemProperties['file.encoding'] = encoding
 }
 
