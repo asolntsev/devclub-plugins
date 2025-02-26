@@ -10,7 +10,7 @@ ext {
   junitVersion = '5.12.0'
   mockitoVersion = '5.15.2'
   assertjVersion = '3.27.3'
-  slf4jVersion = '2.0.16'
+  slf4jVersion = '2.0.17'
 }
 
 dependencies {
