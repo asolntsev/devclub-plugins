@@ -9,7 +9,7 @@ ext {
   postgreVersion = '42.7.7'
   junitVersion = '5.13.4'
   mockitoVersion = '5.18.0'
-  assertjVersion = '3.27.3'
+  assertjVersion = '3.27.4'
   slf4jVersion = '2.0.17'
 }
 
